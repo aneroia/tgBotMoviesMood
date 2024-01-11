@@ -1,0 +1,2 @@
+откуда взят датасет:
+https://www.kaggle.com/datasets/shivamb/go-emotions-google-emotions-dataset/data
