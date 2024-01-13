@@ -35,8 +35,3 @@ df_selected = df.loc[:, selected_columns]
 
 # сохранение измененного датасета
 df_selected.to_csv("film_classifier_dataset.csv")
-
-pd.set_option("display.max_rows", None)
-pd.set_option("display.max_columns", None)
-
-print(df_selected.head(2))
