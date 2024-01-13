@@ -34,7 +34,7 @@ selected_columns = ['Movie_Title', 'Year', 'Rating', 'Runtime(Mins)', 'main_genr
 df_selected = df.loc[:, selected_columns]
 
 # сохранение измененного датасета
-df_selected.to_csv("film_classifier_dataset")
+df_selected.to_csv("film_classifier_dataset.csv")
 
 pd.set_option("display.max_rows", None)
 pd.set_option("display.max_columns", None)
