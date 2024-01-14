@@ -18,7 +18,8 @@ help_message = '''📌 Here's a little instruction on how to work with me:\n
 
 writeMe_message = 'Write me about your day (up to 100 characters):'
 
-last_command = ""
+last_message = ""
+message_flag = False
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
@@ -38,15 +39,77 @@ def send_help(message):
 @bot.message_handler(func=lambda message: message.text == "🎬 Let's get started")
 def handle_start(message):
     bot.send_message(message.chat.id, writeMe_message)
+    bot.register_next_step_handler(message, get_random_word)
+
+@bot.message_handler(func=lambda message: message.text == "↩️ Back to start")
+def handle_backtostart(message):
+    bot.register_next_step_handler(message, send_welcome)
 
 
-@bot.message_handler(func=lambda message: True)
-def handle_message(message):
-    words = message.text.split()  # Разбиваем сообщение пользователя на слова
-    if len(words) > 0:
-        random_word = random.choice(words)  # Выбираем случайное слово
-        bot.send_message(message.chat.id, random_word)
+def get_random_word(message):
+    global message_flag
+    global last_message
+    if not message_flag:
+        last_message = message.text
+        message_flag = True
+        words = message.text.split()  # Разбиваем сообщение пользователя на слова
+        if len(words) > 0:
+            random_word = random.choice(words)  # Выбираем случайное слово
+            bot.send_message(message.chat.id, random_word)
+            show_options_keyboard(message)
+    elif message_flag:
+        words = last_message.split()  # Разбиваем сообщение пользователя на слова
+        if len(words) > 0:
+            random_word = random.choice(words)  # Выбираем случайное слово
+            bot.send_message(message.chat.id, random_word)
+            show_options_keyboard(message)
 
+
+def show_options_keyboard(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    btn1 = types.KeyboardButton("📼 More")
+    btn2 = types.KeyboardButton("✉️ New Message")
+    btn3 = types.KeyboardButton("↩️ Back to start")
+    btn4 = types.KeyboardButton("⭐️ Rate this selection")
+    markup.add(btn1, btn2, btn3, btn4)
+    bot.send_message(message.chat.id, "🛠 Choose the option:", reply_markup=markup)
+    bot.register_next_step_handler(message, handle_options)
+
+def handle_options(message):
+    global message_flag
+    if message.text == '📼 More':
+        bot.send_message(message.chat.id, "📼 New selection of movies:")
+        get_random_word(message)
+    elif message.text == '✉️ New Message':
+        message_flag = False
+        bot.send_message(message.chat.id, writeMe_message)
+        bot.register_next_step_handler(message, get_random_word)
+    elif message.text == '↩️ Back to start':
+        message_flag = False
+        send_welcome(message)
+    elif message.text == '⭐️ Rate this selection':
+        message_flag = False
+        rate_buttons(message)
+
+@bot.message_handler(func=lambda message: message.text == "⭐️ Rate this selection")
+def rate_buttons(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    btn1 = types.KeyboardButton("1")
+    btn2 = types.KeyboardButton("2")
+    btn3 = types.KeyboardButton("3")
+    btn4 = types.KeyboardButton("4")
+    btn5 = types.KeyboardButton("5")
+    markup.add(btn1, btn2, btn3, btn4, btn5)
+
+    bot.send_message(message.chat.id, "Оцените по шкале от 1 до 5", reply_markup=markup)
+
+@bot.message_handler(func=lambda message: message.text.isdigit() and int(message.text) in range(1, 6))
+def handle_rating(message):
+    bot.send_message(message.chat.id, "Спасибо за обратную связь")
+    markup = types.ReplyKeyboardMarkup(row_width=1)
+    start_button = types.KeyboardButton("↩️ Back to start")
+    markup.add(start_button)
+    bot.send_message(message.chat.id, "Вы можете вернуться в начало", reply_markup=markup)
 
 
 bot.polling()
