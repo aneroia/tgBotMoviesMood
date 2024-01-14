@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9a6d4ae-57af-4018-a119-31e01c452fc1" name="Changes" comment="без лишних заметок">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMDb_All_Genres_etf_clean1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/film_classifier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/film_classifier_dataset.csv" beforeDir="false" />
+    <list default="true" id="a9a6d4ae-57af-4018-a119-31e01c452fc1" name="Changes" comment="Обработка датасета и создание классификатора фильме на его основе">
+      <change beforePath="$PROJECT_DIR$/film_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/film_classifier.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,22 +21,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="SOFT" />
-    <option name="UPDATE_TYPE" value="REBASE" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;aneroia&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="8d4a8484-ac7d-4704-86a5-6445726b9db2" />
-        <option name="url" value="https://github.com/aneroia/tgBotMoviesMood.git" />
-      </UrlAndAccount>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -59,10 +40,14 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/nikitateresenko/Pycharm Projects/tgBotMoviesMood&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Anna\PycharmProjects\tgBotMoviesMood" />
     </key>
@@ -139,21 +124,21 @@
       <option name="project" value="LOCAL" />
       <updated>1704993158390</updated>
     </task>
-    <task id="LOCAL-00008" summary="без лишних заметок">
+    <task id="LOCAL-00008" summary="Обработка датасета и создание классификатора фильме на его основе">
       <option name="closed" value="true" />
-      <created>1704993418944</created>
+      <created>1705181845061</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1704993418944</updated>
+      <updated>1705181845061</updated>
     </task>
-    <task id="LOCAL-00009" summary="без лишних заметок">
+    <task id="LOCAL-00009" summary="Обработка датасета и создание классификатора фильме на его основе">
       <option name="closed" value="true" />
-      <created>1704994304993</created>
+      <created>1705182048741</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1704994304993</updated>
+      <updated>1705182048741</updated>
     </task>
     <option name="localTasksCounter" value="10" />
     <servers />
@@ -171,8 +156,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="nachalo" />
-    <MESSAGE value="1" />
     <MESSAGE value="без лишних заметок" />
-    <option name="LAST_COMMIT_MESSAGE" value="без лишних заметок" />
+    <MESSAGE value="1" />
+    <MESSAGE value="Обработка датасета и создание классификатора фильме на его основе" />
+    <option name="LAST_COMMIT_MESSAGE" value="Обработка датасета и создание классификатора фильме на его основе" />
   </component>
 </project>
