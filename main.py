@@ -52,3 +52,5 @@ df = df.drop(['annoyance', 'disapproval', 'disgust'], axis=1)
 
 print(df.head())
 print(df.columns)
+
+df.to_csv('EmotionsDataset.csv')
