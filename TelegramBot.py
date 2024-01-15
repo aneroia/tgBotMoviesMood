@@ -94,11 +94,11 @@ def handle_options(message):
 @bot.message_handler(func=lambda message: message.text == "⭐️ Rate this selection")
 def rate_buttons(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    btn1 = types.KeyboardButton("1")
-    btn2 = types.KeyboardButton("2")
-    btn3 = types.KeyboardButton("3")
-    btn4 = types.KeyboardButton("4")
-    btn5 = types.KeyboardButton("5")
+    btn1 = types.KeyboardButton("⭐️")
+    btn2 = types.KeyboardButton("⭐️⭐️")
+    btn3 = types.KeyboardButton("⭐️⭐️⭐️")
+    btn4 = types.KeyboardButton("⭐️⭐️⭐️⭐️")
+    btn5 = types.KeyboardButton("⭐️⭐️⭐️⭐️⭐️")
     markup.add(btn1, btn2, btn3, btn4, btn5)
 
     bot.send_message(message.chat.id, "⭐️ Rate from 1 to 5", reply_markup=markup)
