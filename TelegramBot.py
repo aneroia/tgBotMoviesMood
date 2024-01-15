@@ -18,7 +18,7 @@ help_message = '''📌 Here's a little instruction on how to work with me:\n
 📈 I will analyze your mood and suggest you a selection of movies that fit your mood.\n
 🎬 Press "start" to begin!'''
 
-writeMe_message = 'Write me about your day (up to 100 characters):'
+writeMe_message = '📝 Write me about your day (up to 100 characters):'
 
 last_message = ""
 message_flag = False

@@ -33,4 +33,3 @@ def predict_emotion(user_input):
                       key=lambda emotion: prediction[0][emotions_labels.columns.get_loc(emotion)])
 
     return max_emotion
-
