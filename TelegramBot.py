@@ -1,6 +1,8 @@
 import telebot
 import random
 from telebot import types
+from Movie_Selection import get_str_films
+import predict_emotion
 
 bot = telebot.TeleBot("6776361176:AAEQNFDg6KQsM4ALYu5grGQgpuPTt0dAByE")
 
@@ -45,6 +47,25 @@ def handle_start(message):
 def handle_backtostart(message):
     bot.register_next_step_handler(message, send_welcome)
 
+
+def get_mood_anf_movies(message):
+    global message_flag
+    global last_message
+    if not message_flag:
+        last_message = message.text
+        message_flag = True
+        mood = last_message  # Разбиваем сообщение пользователя на слова
+        if len(words) > 0:
+            random_word = random.choice(words)  # Выбираем случайное слово
+            bot.send_message(message.chat.id, random_word)
+            show_options_keyboard(message)
+    elif message_flag:
+        words = last_message.split()  # Разбиваем сообщение пользователя на слова
+        if len(words) > 0:
+            random_word = random.choice(words)  # Выбираем случайное слово
+            bot.send_message(message.chat.id, random_word)
+            show_options_keyboard(message)
+    return last_message
 
 def get_random_word(message):
     global message_flag

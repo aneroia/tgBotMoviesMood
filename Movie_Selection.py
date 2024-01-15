@@ -1,5 +1,6 @@
 import pandas as pd
 import random
+import predict_emotion
 
 df = pd.read_csv("film_classifier_dataset.csv")
 
@@ -41,4 +42,11 @@ def get_str_films(film_recommendation,random_movies, random_movies2):
         film_recommendation += f'''{movie_info['Movie_Title']}, {movie_info['Year']}, {movie_info['Rating']}, {movie_info['Runtime(Mins)']} mins, {movie_info['main_genre']}\n'''
     return film_recommendation
 
-print(get_str_films(film_recommendation,random_movies, random_movies2))
+def movies_for_bot(emotion):
+    film_recommendation = ''
+    random_movies, random_movies2 = get_movies(df,emotion)
+    film_recommendation = get_str_films(film_recommendation, random_movies, random_movies2)
+    return film_recommendation
+
+#print(film_recommendation)
+#print(get_str_films(film_recommendation,random_movies, random_movies2))
