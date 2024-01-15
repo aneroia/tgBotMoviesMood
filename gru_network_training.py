@@ -11,26 +11,21 @@ from keras.callbacks import ModelCheckpoint, EarlyStopping
 
 emotions_dataset = pd.read_csv('EmotionsDataset.csv')
 
-# Предобработка текста
 tokenizer = Tokenizer()
 tokenizer.fit_on_texts(emotions_dataset['text'])
 stop_words = set(['and', 'in', 'not', 'that', 'on', 'with'])
 emotions_dataset['filtered_text'] = emotions_dataset['text'].apply(
     lambda x: ' '.join([word for word in x.split() if word.lower() not in stop_words]))
 
-# Преобразование текста в числовые векторы
 sequences = tokenizer.texts_to_sequences(emotions_dataset['filtered_text'])
 max_sequence_length = max(len(s) for s in sequences)  # определяем максимальную длину последовательности
 X = pad_sequences(sequences, maxlen=max_sequence_length)
 
-# Преобразование меток эмоций
 emotions_labels = emotions_dataset[['anger', 'fear', 'joy', 'sadness', 'сalmness']]
 y = np.array(emotions_labels)
 
-# Разделение на обучающий и тестовый наборы
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Построение модели GRU
 embedding_dim = 100
 gru_units = 32
 
@@ -42,7 +37,6 @@ model.add(Dense(units=len(emotions_labels.columns), activation='sigmoid'))
 
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-# Обучение модели
 epochs = 10
 batch_size = 23
 
