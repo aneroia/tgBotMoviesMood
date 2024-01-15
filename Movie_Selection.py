@@ -27,7 +27,7 @@ def get_movies(df,emotion):
 
 
 
-random_movies, random_movies2 = get_movies(df, emotion)
+random_movies, random_movies2 = get_movies(df,emotion)
 
 
 def get_str_films(film_recommendation,random_movies, random_movies2):
