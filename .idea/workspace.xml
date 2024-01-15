@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9a6d4ae-57af-4018-a119-31e01c452fc1" name="Changes" comment="Обученная модель успешно предсказывает эмоции и возвращает словарь с названием эмоции и её значением">
+    <list default="true" id="a9a6d4ae-57af-4018-a119-31e01c452fc1" name="Changes" comment="1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gru_network_training.py" beforeDir="false" afterPath="$PROJECT_DIR$/gru_network_training.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predict_emotion.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict_emotion.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705277791377</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="1">
+      <created>1705277873166</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1705277873166</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -267,12 +274,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="nachalo" />
     <MESSAGE value="без лишних заметок" />
-    <MESSAGE value="1" />
     <MESSAGE value="Обработка датасета и создание классификатора фильме на его основе" />
     <MESSAGE value="testPush" />
     <MESSAGE value="delete pushestests" />
     <MESSAGE value="Обновление обучения нейросети: определеные оптимальные эпохи и размер шага для обучения, а также модель была сохранена в файл best_model_weights.h5" />
     <MESSAGE value="Обученная модель успешно предсказывает эмоции и возвращает словарь с названием эмоции и её значением" />
-    <option name="LAST_COMMIT_MESSAGE" value="Обученная модель успешно предсказывает эмоции и возвращает словарь с названием эмоции и её значением" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
 </project>
