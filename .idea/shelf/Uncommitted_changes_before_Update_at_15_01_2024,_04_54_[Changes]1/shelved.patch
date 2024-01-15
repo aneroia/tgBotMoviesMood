@@ -1,0 +1,21 @@
+Index: gru_network_training.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import epochs\nimport numpy as np\nimport pandas as pd\nfrom keras_preprocessing.sequence import pad_sequences\nfrom keras_preprocessing.text import Tokenizer\nfrom keras.models import Sequential\nfrom keras.layers import Embedding, GRU, Dense\nfrom sklearn.model_selection import train_test_split\n\n# Загрузка датасета\nemotions_dataset = pd.read_csv('EmotionsDataset.csv')\n\n# Предобработка текста\ntokenizer = Tokenizer()\ntokenizer.fit_on_texts(emotions_dataset['text'])\nstop_words = set(['and', 'in', 'not', 'that', 'on', 'with'])  # замените это на ваш фильтр стоп-слов\nemotions_dataset['filtered_text'] = emotions_dataset['text'].apply(lambda x: ' '.join([word for word in x.split() if word.lower() not in stop_words]))\n\n# Преобразование текста в числовые векторы\nsequences = tokenizer.texts_to_sequences(emotions_dataset['filtered_text'])\nmax_sequence_length = max(len(s) for s in sequences)  # определяем максимальную длину последовательности\nX = pad_sequences(sequences, maxlen=max_sequence_length)\n\n# Преобразование меток эмоций\nemotions_labels = emotions_dataset[['anger', 'fear', 'joy', 'sadness', 'сalmness']]\ny = np.array(emotions_labels)\n\n# Разделение на обучающий и тестовый наборы\nX_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Построение модели GRU\nembedding_dim = 100\ngru_units = 64\n\nmodel = Sequential()\nmodel.add(Embedding(input_dim=len(tokenizer.word_index) + 1, output_dim=embedding_dim, input_length=max_sequence_length))\nmodel.add(GRU(units=gru_units))\nmodel.add(Dense(units=len(emotions_labels.columns), activation='sigmoid'))\n\nmodel.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])\n\n# Обучение модели\nepochs = 10  # подберите количество эпох\nbatch_size = 32  # подберите размер батча\nmodel.fit(X_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(X_val, y_val))\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gru_network_training.py b/gru_network_training.py
+--- a/gru_network_training.py	
++++ b/gru_network_training.py	
+@@ -44,3 +44,9 @@
+ batch_size = 32  # подберите размер батча
+ model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(X_val, y_val))
+ 
++user_input_text = "Excited about trying this new project!"
++user_input_sequence = tokenizer.texts_to_sequences([user_input_text])
++user_input_padded = pad_sequences(user_input_sequence, maxlen=max_sequence_length)
++predicted_emotion = model.predict(user_input_padded)
++
++print(predicted_emotion)
+\ No newline at end of file
