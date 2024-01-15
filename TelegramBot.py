@@ -111,5 +111,4 @@ def handle_rating(message):
     markup.add(start_button)
     bot.send_message(message.chat.id, "🏠 You can return to the start", reply_markup=markup)
 
-
 bot.polling()
