@@ -4,7 +4,7 @@ from telebot import types
 from Movie_Selection import movies_for_bot
 from predict_emotion import predict_emotion
 
-bot = telebot.TeleBot("6776361176:AAEQNFDg6KQsM4ALYu5grGQgpuPTt0dAByE")
+bot = telebot.TeleBot("")
 
 hello_message = '''👋 Hello! I'm MovieMoodBot!\n 
 🤖 I'm your personal movie assistant. Just tell me about your mood 
